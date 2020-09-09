@@ -11,6 +11,8 @@ class Teacher < ActiveRecord::Base
         if correct_classes.length > 0
             puts "#{class_name} attendance:"
             correct_classes.each {|classroom| puts "#{classroom.student.name} - " + (classroom.student.check_in_status ? "here" : "absent") }
+        else
+            puts "#{class_name} has no students."
         end
     end
 end
