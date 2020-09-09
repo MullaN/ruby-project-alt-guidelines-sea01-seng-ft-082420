@@ -2,12 +2,12 @@ Teacher.destroy_all
 Student.destroy_all
 Classroom.destroy_all
 
-t1 = Teacher.create("Sam", "sam@ausd.com")
-t2 = Teacher.create("John", "john@ausd.com")
+Teacher.create(name: "Sam", contact_info: "sam@ausd.com")
+Teacher.create(name: "John", contact_info: "john@ausd.com")
 
-s1 = Student.create("Taylor", "4", "taylor@ausd.com" true)
-s2 = Student.create("Brooks", "5", "brooks@ausd.com" true)
+Student.create(name: "Taylor", age: "4", contact_info: "taylor@ausd.com", check_in_status: true)
+Student.create(name: "Brooks", age: "5", contact_info: "brooks@ausd.com", check_in_status: true)
 
 
-c1 = Classroom.create("Science", s1, t2)
-c3 = Classroom.create("Art", s2. t1)
+Classroom.create(name: "Science")
+Classroom.create(name: "Art")
