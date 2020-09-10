@@ -22,26 +22,30 @@ end
       if teacher 
        puts "Welcome, #{user_input}!"
        sleep 2
-       teacher_welcome
+       teacher_welcome(teacher)
       else 
        puts "Sorry, you are not a registered teacher at this location."
    end
 end
    
 
-   def teacher_welcome
+   def teacher_welcome(teacher)
        system("clear")
        choices = %w(view_attendance change_welcome_message)
        user_input = PROMPT.select("Would you like to view your class attendance or change your welcome message?", choices)
        if user_input == "view_attendance"
-         view_attendance
+         user_input = get_user_classes(teacher)
+         teacher.get_attendance(user_input)
        elsif user_input == "change_welcome_message"
-         change_welcome_message
+         selected_class = get_user_classes(teacher)
+         user_input = PROMPT.ask("What would you like to update the message to?")
+         teacher.update_motd_by_class(selected_class, user_input)
        end
    end
 
-   def view_attendance
-      puts "Here is your class attendance:"
+   def get_user_classes(user)
+      choices = user.classrooms.map {|classroom| classroom.name}.uniq
+      PROMPT.select("For which class?", choices)
    end
 
    def change_welcome_message
