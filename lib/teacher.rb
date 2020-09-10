@@ -3,6 +3,7 @@ class Teacher < ActiveRecord::Base
     has_many :students, through: :classrooms
 
     def add_student_to_classroom(student, class_name)
+
         Classroom.create(student_id: student.id, teacher_id: self.id, name: class_name)
     end
 
@@ -10,7 +11,7 @@ class Teacher < ActiveRecord::Base
         correct_classes = select_classrooms_by_name(class_name)
         if correct_classes.length > 0
             puts "#{class_name} attendance:"
-            correct_classes.each {|classroom| puts "#{classroom.student.name} - " + (classroom.student.check_in_status ? "here" : "absent") }
+            correct_classes.each {|classroom| puts "#{classroom.student.name} - " + (classroom.check_in_status ? "here" : "absent") }
         else
             puts "#{class_name} has no students."
         end
@@ -27,6 +28,16 @@ class Teacher < ActiveRecord::Base
     end
 
     def select_classrooms_by_name(class_name)
-        self.classrooms.select {|classroom| classroom.name == class_name}
+        Classroom.all.select {|classroom| classroom.name == class_name}
+    end
+
+    def get_class_roster(class_name)
+        correct_classes = select_classrooms_by_name(class_name)
+        if correct_classes.length > 0
+            puts "Current Roster:"
+            correct_classes.each {|classroom| puts "#{classroom.student.name}"}
+        else
+            puts "#{class_name} has no students."
+        end
     end
 end
