@@ -58,6 +58,15 @@ end
       user_input = PROMPT.multi_select("Please select the class you will be attending?", choices)
    end
 
+   def student_message
+      system("clear")
+      puts "Have a great day!"
+   end
+
+
+ 
+
+
 
 
   
