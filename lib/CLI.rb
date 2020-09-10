@@ -62,6 +62,15 @@ end
       student.check_in_out(class_name)
    end
 
+   def student_message
+      system("clear")
+      puts "Have a great day!"
+   end
+
+
+ 
+
+
 
 
   

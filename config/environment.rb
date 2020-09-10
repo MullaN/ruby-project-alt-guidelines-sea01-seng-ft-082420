@@ -7,5 +7,5 @@ require_all 'lib'
 PROMPT = TTY::Prompt.new
 
 #removes the SQL fire from the displayed info in the terminal :)
-old_logger = ActiveRecord::Base.logger 
-ActiveRecord::Base.logger = nil
+ old_logger = ActiveRecord::Base.logger 
+ ActiveRecord::Base.logger = nil
