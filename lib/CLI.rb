@@ -82,9 +82,13 @@ end
          end
          student = Student.create(name: student_info[:name], age: student_info[:age], contact_info: student_info[:contact_info])
          puts "Thank you #{student.name} for singing up!"
+      end
+      if student.classrooms.length == 0
+         puts "You do not currently have any classes."
          choices = Classroom.all.map {|classroom| classroom.name}.uniq
          menu_option = PROMPT.select("Which class would you like to join?", choices)
          Classroom.create(teacher_id: Classroom.find_by(name: menu_option).teacher.id, student_id: student.id, name: menu_option)
+         student = Student.find_by(name: user_input)
       end
       system("clear")
       puts "Welcome #{user_input}!"
