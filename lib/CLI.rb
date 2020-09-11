@@ -36,7 +36,6 @@ end
        while menu_option != "exit" do
          if menu_option == "view_attendance"
             user_input = get_user_classes(teacher, "Which class would you like to view the attendance for?")
-            #binding.pry
             teacher.get_attendance(user_input)
          elsif menu_option == "change_welcome_message"
             selected_class = get_user_classes(teacher, "Which class would you like to change the message for?")
