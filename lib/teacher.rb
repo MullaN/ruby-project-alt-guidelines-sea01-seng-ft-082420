@@ -28,7 +28,7 @@ class Teacher < ActiveRecord::Base
     end
 
     def select_classrooms_by_name(class_name)
-        Classroom.all.select {|classroom| classroom.name == class_name}
+        Classroom.all.select {|classroom| classroom.name == class_name && classroom.teacher == self}
     end
 
     def get_class_roster(class_name)
